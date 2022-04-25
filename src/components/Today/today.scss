@@ -1,0 +1,83 @@
+@import '../../styles/global';
+@import '../../styles/mixins';
+
+.today {
+    @include flexCenter(column);
+    text-align: center;
+
+    &__search {
+        font-family: Roboto;
+
+        input {
+            padding: 0.5rem 0.3rem;
+            border-radius: 5px 0 0 5px;
+            border: none;
+        }
+
+        button {
+            border: none;
+            padding: 0.5rem 0.3rem;
+            border-radius: 0 5px 5px 0;
+            background-color: $secondary-colour;
+
+            &:disabled {
+                background-color: grey;
+            }
+        }
+    }
+
+    &__weather {
+        margin: 2rem;
+    }
+
+    &__city {
+        font-size: 2.3rem;
+        font-weight: getWeight(light);
+        margin: 0;
+    }
+
+    &__temp {
+        margin: 0;
+        font-size: 4rem;
+        font-weight: getWeight(bold);
+    }
+
+    &__country-region {
+        font-size: 1rem;
+        font-weight: getWeight(regular);
+        margin: 0;
+    }
+}
+
+.todays-forecast {
+    @include forecastContainer;
+
+    h3 {
+        margin: 0;
+        color: rgb($text-colour, 0.8);
+        text-align: left;
+        width: 100%;
+        font-weight: getWeight(bold);
+    }
+
+    hr {
+        @include line;
+    }
+
+    &__row {
+        width: 100%;
+        @include flexStart(row);
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+
+    &__box {
+        width: 3rem;
+        @include flexCenter(column);
+        padding: 0.5rem;
+
+        h4 {
+            margin: 0;
+        }
+    } 
+}

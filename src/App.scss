@@ -1,0 +1,14 @@
+@import './styles/global';
+@import './styles/mixins';
+
+.App {
+  font-family: 'Roboto';
+}
+
+.App-header {
+  @include defaultLook;
+}
+
+.App-loading {
+  @include defaultLook;
+}

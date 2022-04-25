@@ -1,0 +1,32 @@
+@import '../../styles/global';
+@import '../../styles/mixins';
+
+.forecast {
+    margin: 1rem 0;
+    @include forecastContainer;
+
+    h3 {
+        margin: 0;
+        color: rgb($text-colour, 0.8);
+        text-align: left;
+        width: 100%;
+        font-weight: getWeight(bold);
+    }
+
+    hr {
+        @include line;
+    }
+
+    &__container {
+        width: 100%;
+    }
+
+    &__row {
+        @include flexCenter(row);
+        padding: 0.2rem 0;
+        
+        h4 {
+            margin: 0 0.5rem;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin flexStart($direction) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin transition-ease {
+    transition: all 0.5s ease-in-out;
+}
+
+@function getWeight($weight) {
+    @return map-get($font-weights, $weight);
+}
+
+@mixin defaultLook {
+    @include flexCenter(column);
+    background-color: $primary-colour;
+    min-height: 100vh;
+    color: $text-colour;
+}
+
+@mixin forecastContainer {
+    width: 80vw;
+    padding: 1rem;
+    @include flexStart(column);
+    background-color: rgb($secondary-colour, 0.7);
+    border-radius: 0.5rem;
+}
+
+@mixin line {
+    width: 100%;
+    border: none;
+    height: 1px;
+    background-color: rgb($text-colour, 0.5);
+}
