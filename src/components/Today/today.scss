@@ -4,48 +4,119 @@
 .today {
     @include flexCenter(column);
     text-align: center;
+    margin-top: 1rem;
+   
+    &__main {
+        @include flexCenter(column);
+        background-image: linear-gradient($light-blue, $dark-blue);
+        padding: 3rem 0;
+        width: 90vw;
+        height: 40vh;
+        border-radius: 0.5rem;
+        position: relative;
 
-    &__search {
-        font-family: Roboto;
-
-        input {
-            padding: 0.5rem 0.3rem;
-            border-radius: 5px 0 0 5px;
-            border: none;
+        .search-container {
+            @include flexCenter(row);
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
         }
 
-        button {
-            border: none;
-            padding: 0.5rem 0.3rem;
-            border-radius: 0 5px 5px 0;
-            background-color: $secondary-colour;
+        .search {
+            font-family: Roboto;
+            
+            input {
+                padding: 0.5rem 0.3rem;
+                width: 60%;
+                border-radius: 5px 0 0 5px;
+                border: none;
+            }
 
-            &:disabled {
-                background-color: grey;
+            button {
+                border: none;
+                padding: 0.5rem 0.3rem;
+                border-radius: 0 5px 5px 0;
+                background-color: $text-colour;
+
+                &:disabled {
+                    background-color: grey;
+                }
+            }
+
+            &.show {
+                visibility: visible;
+                opacity: 1;
+                @include transition-ease;
+            }
+
+            &.hidden {
+                visibility: hidden;
+                opacity: 0;
+                @include transition-ease;
+            }
+        }
+
+        .searchIcon {
+            height: 3rem;
+            width: 3rem;
+            color: $text-colour;
+        }
+
+        .location {
+            @include flexStart(row);
+            width: 85%;
+            font-size: 1rem;
+            font-weight: getWeight(regular);
+            position: absolute;
+            bottom: 0;
+
+            h4 {
+                font-weight: getWeight(bold);
+                font-size: 0.8rem;
+                color: rgb($text-colour, 0.8)
             }
         }
     }
 
     &__weather {
         margin: 2rem;
-    }
 
-    &__city {
-        font-size: 2.3rem;
-        font-weight: getWeight(light);
-        margin: 0;
-    }
+        h4 { margin: 0}
 
-    &__temp {
-        margin: 0;
-        font-size: 4rem;
-        font-weight: getWeight(bold);
-    }
+        .city {
+            @include flexCenter(row);
+            
+            .icon {
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-right: 0.4rem;
+            }
 
-    &__country-region {
-        font-size: 1rem;
-        font-weight: getWeight(regular);
-        margin: 0;
+            .name {
+                font-size: 2rem;
+                font-weight: getWeight(light);
+                margin: 0;
+            }
+        }
+
+        .temp {
+            margin: 0.5rem;
+            font-size: 4rem;
+            font-weight: getWeight(bold);
+            text-shadow: 0px 0px 5px $primary-colour;
+        }
+
+        .condition {
+            font-weight: getWeight(regular);
+            font-size: 1.2rem;
+        }
+
+        .date {
+            font-weight: getWeight(bold);
+            font-size: 0.8rem;
+            margin: 0.2rem 0;
+            color: rgb($text-colour, 0.8)
+        }
     }
 }
 
@@ -54,7 +125,7 @@
 
     h3 {
         margin: 0;
-        color: rgb($text-colour, 0.8);
+        color: $text-colour;
         text-align: left;
         width: 100%;
         font-weight: getWeight(bold);
@@ -79,5 +150,15 @@
         h4 {
             margin: 0;
         }
+
+        &.curr-time {
+            background-image: linear-gradient($light-blue, $dark-blue);
+            border-radius: 0.5rem;
+            text-shadow: 0px 0px 4px $primary-colour;
+        }
     } 
+
+    &__time {
+        font-weight: getWeight(regular);
+    }
 }

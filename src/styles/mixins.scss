@@ -12,6 +12,13 @@
     flex-direction: $direction;
 }
 
+@mixin flexSpaceBetweenCenter($direction) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: $direction;
+}
+
 @mixin transition-ease {
     transition: all 0.5s ease-in-out;
 }
@@ -28,11 +35,9 @@
 }
 
 @mixin forecastContainer {
-    width: 80vw;
+    width: 90vw;
     padding: 1rem;
     @include flexStart(column);
-    background-color: rgb($secondary-colour, 0.7);
-    border-radius: 0.5rem;
 }
 
 @mixin line {

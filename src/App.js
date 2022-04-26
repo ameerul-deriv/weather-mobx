@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./App.scss";
 import Today from "./components/Today/Today";
 import Forecast from "./components/Forecast/Forecast";
+import TodaysForecast from "./components/Today/TodaysForecast";
 import { useStore } from "./store/WeatherStore";
 import { observer } from "mobx-react";
 
@@ -22,6 +23,7 @@ function App() {
       ) : (
         <header className="App-header">
           <Today></Today>
+          <TodaysForecast />
           <Forecast></Forecast>
         </header>
       )}
