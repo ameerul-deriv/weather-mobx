@@ -6,6 +6,7 @@ import TodaysForecast from "./components/TodaysForecast/TodaysForecast";
 import { useStore } from "./store/WeatherStore";
 import { observer } from "mobx-react";
 import ErrorPopup from "./components/ErrorPopup/ErrorPopup";
+import Loading from "./components/Loading/Loading";
 
 function App() {
   const weatherStore = useStore();
@@ -21,7 +22,9 @@ function App() {
     <div className="App">
       <ErrorPopup />
       {isLoading ? (
-        <div className="App-loading">Loading</div>
+        <div className="App-loading">
+          <Loading />
+        </div>
       ) : (
         <header className="App-header">
           <Today></Today>
