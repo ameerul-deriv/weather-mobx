@@ -17,8 +17,8 @@
     }
 
     &__container {
-        width: 90vw;
-        margin: 0.2rem 0;
+        width: 100%;
+        padding: 0.2rem 0.4rem;
 
         &:hover {
             background-image: linear-gradient($light-blue, $dark-blue);
@@ -28,33 +28,13 @@
         &.active {
             background-image: linear-gradient($light-blue, $dark-blue);
             border-radius: 0.5rem;
-            margin: 0;
-        }
-
-        .info {
-            @include flexSpaceBetweenCenter(column);
-            padding: 0.2rem 0.4rem;
-            height: 10vh;
-            overflow-x: scroll;
-            white-space: nowrap;
-            margin-bottom: 0.5rem;
-
-            h4 {
-                margin: 0;
-            }
-
-            .info-row {
-                width: 80%;
-                @include flexSpaceBetweenCenter(row);
-                padding: 0.2rem 0.4rem;
-            }
         }
     }
 
     &__row {
         @include flexSpaceBetweenCenter(row);
         font-size: 0.9rem;
-        padding: 0.2rem 0.4rem;
+        cursor: pointer;
 
         h4 {
             margin: 0;
@@ -66,10 +46,19 @@
         }
 
         .forecast-img {
-            @include flexCenter(row);
+            @include flexStart(row);
 
             h4 {
                 font-weight: getWeight(regular);
+                @include textOverflow(5rem);
+
+                @include mobile-lg {
+                    @include textOverflow(10rem);
+                }
+
+                @include tablet-view {
+                    @include textOverflow(7rem);
+                }
             }
 
             img {
@@ -90,5 +79,11 @@
         .info {
             @include flexSpaceBetweenCenter(column);
         }
+    }
+}
+
+@include tablet-view {
+    .forecast {
+        width: 40vw;
     }
 }

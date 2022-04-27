@@ -7,8 +7,27 @@
 
 .App-header {
   @include defaultLook;
+
+  .app-forecast {
+    @include flexCenter(column);
+  }
 }
 
 .App-loading {
   @include defaultLook;
+}
+
+@include tablet-view {
+  .App-header {
+    @include flexCenter(row);
+    
+    .app-forecast {
+      height: 40vh;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      border: 5px solid $light-blue;
+      border-radius: 0.5rem;
+    }
+  }
 }

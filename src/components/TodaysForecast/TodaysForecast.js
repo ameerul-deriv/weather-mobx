@@ -1,5 +1,5 @@
 import React from "react";
-import "./today.scss";
+import "./todaysForecast.scss";
 import { useStore } from "../../store/WeatherStore";
 import { observer } from "mobx-react";
 

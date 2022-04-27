@@ -1,0 +1,72 @@
+@import '../../styles/global';
+@import '../../styles/mixins';
+
+.todays-forecast {
+    @include forecastContainer;
+    position: relative;
+
+    h3 {
+        margin: 0;
+        color: $text-colour;
+        text-align: left;
+        width: 100%;
+        font-weight: getWeight(bold);
+    }
+
+    hr {
+        @include line;
+    }
+
+    &__row {
+        width: 100%;
+        @include flexStart(row);
+        overflow-x: scroll;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &::-webkit-scrollbar-thumb {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar {
+            background-color: transparent;
+            width: 0.4rem;
+            height: 0.4rem;
+        }
+
+        &:hover {
+            &::-webkit-scrollbar-thumb {
+                background: rgb($text-colour, 0.8);
+                border-radius: 0.5rem;
+            }
+        }
+    }
+
+    &__box {
+        width: 3rem;
+        @include flexCenter(column);
+        padding: 0.5rem;
+        margin-bottom: 0.1rem;
+
+        h4 {
+            margin: 0;
+        }
+
+        &.curr-time {
+            background-image: linear-gradient($light-blue, $dark-blue);
+            border-radius: 0.5rem;
+            text-shadow: 0px 0px 4px $primary-colour;
+        }
+    } 
+
+    &__time {
+        font-weight: getWeight(regular);
+    }
+}
+
+
+@include tablet-view {
+    .todays-forecast {
+        width: 40vw;
+    }
+}

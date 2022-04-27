@@ -36,7 +36,7 @@
 
 @mixin forecastContainer {
     width: 90vw;
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
     @include flexStart(column);
 }
 
@@ -45,4 +45,35 @@
     border: none;
     height: 1px;
     background-color: rgb($text-colour, 0.5);
+}
+
+@mixin textOverflow($width) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: $width;
+    white-space: nowrap;
+}
+
+@mixin mobile-lg {
+    @media screen and (min-width: 425px) {
+        @content;
+    }
+}
+
+@mixin tablet-sm {
+    @media screen and (min-width: 600px) {
+        @content;
+    }
+}
+
+@mixin tablet-view {
+    @media screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin laptop-view {
+    @media screen and (min-width: 1024px) {
+        @content;
+    }
 }

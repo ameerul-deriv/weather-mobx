@@ -35,7 +35,7 @@ const Today = () => {
             </button>
           </div>
           <HiOutlineSearchCircle
-            className="searchIcon"
+            className={`searchIcon ${search && "active"}`}
             onClick={handleSearch}
           />
         </div>

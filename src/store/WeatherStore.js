@@ -28,6 +28,7 @@ export default class WeatherStore {
   futureForecastRow = [];
   currDate;
   isLoading = true;
+  isError = { error: false, msg: "", name: "" };
 
   // load default weather data on initial render
   loadDefaultWeather() {
@@ -68,6 +69,13 @@ export default class WeatherStore {
       })
       .then(() => {
         this.isLoading = false;
+      })
+      .catch((error) => {
+        this.isError = {
+          error: true,
+          msg: error.toJSON().message,
+          name: error.toJSON().name,
+        };
       });
   }
 
@@ -146,6 +154,10 @@ export default class WeatherStore {
 
     return this.currDate;
   }
+
+  closeError() {
+    this.isError.error = false;
+  }
 }
 
 decorate(WeatherStore, {
@@ -155,12 +167,14 @@ decorate(WeatherStore, {
   futureForecastRow: observable,
   currDate: observable,
   isLoading: observable,
+  isError: observable,
   loadDefaultWeather: action.bound,
   setWeather: action.bound,
   setTodaysForecast: action.bound,
   setFutureForecastRow: action.bound,
   setTempColour: action.bound,
   getFormattedDate: action.bound,
+  closeError: action.bound,
 });
 
 let store_context;

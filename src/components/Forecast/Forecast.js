@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./forecast.scss";
 import { useStore } from "../../store/WeatherStore";
 import { observer } from "mobx-react";
+import ForecastInfo from "./ForecastInfo/ForecastInfo";
 
 const Forecast = () => {
   const weatherStore = useStore();
@@ -36,27 +37,7 @@ const Forecast = () => {
                 </h4>
               </div>
             </div>
-            {i === key && (
-              <div className="info">
-                {forecast.hour.map((hour, h) => {
-                  let time = hour.time;
-                  let day = weatherStore.getFormattedDate(hour.time_epoch);
-
-                  return (
-                    <div key={h} className="info-row">
-                      <div className="time-container">
-                        <h4 className="time">
-                          {time.substring(time.length - 5)}
-                        </h4>
-                        <h4 className="day">{day.slice(0, -5)}</h4>
-                      </div>
-                      <img className="icon" src={hour.condition.icon} alt="" />
-                      <h4 className="temp">{hour.temp_c}</h4>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+            {i === key && <ForecastInfo forecast={forecast.hour} show={true} />}
           </div>
         );
       })}

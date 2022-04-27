@@ -1,0 +1,164 @@
+@import '../../../styles/global';
+@import '../../../styles/mixins';
+
+.forecast-info {
+    @include flexCenter(column);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb($primary-colour, 0.6);
+    height: 100%;
+    width: 100vw;
+
+    h4 {
+        margin: 0;
+    }
+
+    .info-container {
+        height: 50%;
+        width: 70%;
+        background-image: linear-gradient($dark-blue, $primary-colour);
+        padding: 1rem 1.7rem;
+        border-radius: 0.5rem;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        white-space: nowrap;
+        box-shadow: 0px 0px 6px $light-blue;
+        cursor: pointer;
+
+        &.show {
+            opacity: 1;
+            @include transition-ease;
+        }
+
+        &.hidden {
+            opacity: 0;
+            @include transition-ease;
+        }
+
+
+        &::-webkit-scrollbar-thumb {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar {
+            background-color: transparent;
+            width: 0.4rem;
+            height: 0.4rem;
+        }
+
+        &:hover {
+            &::-webkit-scrollbar-thumb {
+                background: rgb($text-colour, 0.8);
+                border-radius: 0.5rem;
+            }
+        }
+
+        .info-row {
+            @include flexSpaceBetweenCenter(row);
+            padding: 0.5rem 0;
+
+            .day {
+                font-size: 0.6rem;
+                font-weight: getWeight(bold)
+            }
+
+            .icon-pred {
+                @include flexCenter(row);
+
+                .icon {
+                    width: 2rem;
+                    height: 2rem;
+                }
+
+                .pred {
+                    display: none;
+
+                    @include mobile-lg {
+                        margin: 0 0 0 0.2rem;
+                        font-size: 0.8rem;
+                        font-weight: getWeight(regular);
+                        display: flex;
+                        @include textOverflow(4rem);
+                    }
+
+                    @include tablet-sm {
+                        @include textOverflow(6rem);
+                    }
+
+                    @include tablet-view {
+                        @include textOverflow(7.5rem);
+                    }
+
+                    @include laptop-view {
+                        @include textOverflow(11.5rem);
+                    }
+                }
+            }
+
+            .hour-pred {
+                @include flexSpaceBetweenCenter(row);
+                display: none;
+
+                .chance-rain {
+                    @include flexCenter(column);
+
+                    .chance-rain-text {
+                        margin-top: 0.2rem;
+                        font-size: 0.8rem;
+                    }
+                }
+
+                .chance-snow {
+                    @include flexCenter(column);
+
+                    .chance-snow-text {
+                        margin-top: 0.2rem;
+                        font-size: 0.8rem;
+                    }
+                }
+
+                .wind-speed {
+                    @include flexCenter(column);
+                    display: none;
+
+                    .wind-speed-text {
+                        margin-top: 0.2rem;
+                        font-size: 0.8rem;
+                    }
+                }
+
+                .humidity {
+                    @include flexCenter(column);
+                    display: none;
+
+                    .humidity-text {
+                        margin-top: 0.2rem;
+                        font-size: 0.8rem;
+                    }
+                }
+
+                @include mobile-lg {
+                    display: flex;
+                    width: 3rem;
+                }
+
+                @include tablet-sm {
+                    width: 7rem;
+
+                    .wind-speed {
+                        display: flex;
+                    }
+                }
+
+                @include tablet-view {
+                    width: 12rem;
+
+                    .humidity {
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+}
