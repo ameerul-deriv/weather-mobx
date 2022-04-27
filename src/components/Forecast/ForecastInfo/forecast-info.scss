@@ -3,7 +3,7 @@
 
 .forecast-info {
     @include flexCenter(column);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: rgb($primary-colour, 0.6);
