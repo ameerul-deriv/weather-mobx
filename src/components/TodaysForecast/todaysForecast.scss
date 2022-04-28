@@ -17,6 +17,32 @@
         @include line;
     }
 
+    &__title {
+        width: 100%;
+        @include flexSpaceBetweenCenter(row);
+
+        h3 {
+            width: 50%;
+        }
+
+        .todays-forecast-scroll {
+            @include flexEnd(row);
+            width: 50%;
+            color: $text-colour;
+
+            h4 {
+                margin: 0;
+                margin-right: 0.2rem;
+                font-size: 0.8rem;
+            }
+
+            .scroll-icon {
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+    }
+
     &__row {
         width: 100%;
         @include flexStart(row);
@@ -46,7 +72,9 @@
         width: 3rem;
         @include flexCenter(column);
         padding: 0.5rem;
-        margin-bottom: 0.1rem;
+        margin: 0 0.2rem 0.1rem 0.2rem;
+        background-image: linear-gradient(#424242, #292929);
+        border-radius: 0.5rem;
 
         h4 {
             margin: 0;
@@ -56,6 +84,7 @@
             background-image: linear-gradient($light-blue, $dark-blue);
             border-radius: 0.5rem;
             text-shadow: 0px 0px 4px $primary-colour;
+            margin: 0 0.2rem 0.1rem 0;
         }
     } 
 

@@ -30,7 +30,7 @@ function App() {
           <Today></Today>
           <div className="app-forecast">
             <TodaysForecast />
-            <Forecast></Forecast>
+            <Forecast />
           </div>
         </header>
       )}

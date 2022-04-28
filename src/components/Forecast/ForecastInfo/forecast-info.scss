@@ -73,6 +73,7 @@
 
                 .pred {
                     display: none;
+                    @include textOverflow(0);
 
                     @include mobile-lg {
                         margin: 0 0 0 0.2rem;
@@ -80,18 +81,22 @@
                         font-weight: getWeight(regular);
                         display: flex;
                         @include textOverflow(4rem);
+                        @include transition-ease;
                     }
 
                     @include tablet-sm {
                         @include textOverflow(6rem);
+                        @include transition-ease;
                     }
 
                     @include tablet-view {
                         @include textOverflow(7.5rem);
+                        @include transition-ease;
                     }
 
                     @include laptop-view {
                         @include textOverflow(11.5rem);
+                        @include transition-ease;
                     }
                 }
             }
@@ -141,10 +146,12 @@
                 @include mobile-lg {
                     display: flex;
                     width: 3rem;
+                    @include transition-ease;
                 }
 
                 @include tablet-sm {
                     width: 7rem;
+                    @include transition-ease;
 
                     .wind-speed {
                         display: flex;
@@ -153,6 +160,7 @@
 
                 @include tablet-view {
                     width: 12rem;
+                    @include transition-ease;
 
                     .humidity {
                         display: flex;

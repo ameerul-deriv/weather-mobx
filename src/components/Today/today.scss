@@ -7,25 +7,26 @@
     margin-top: 1rem;
     width: 90vw;
     position: relative;
+    background-image: linear-gradient($light-blue, $dark-blue);
+    height: 50vh;
+    border-radius: 0.5rem;
    
     &__main {
         @include flexCenter(column);
-        background-image: linear-gradient($light-blue, $dark-blue);
-        padding: 3rem 0;
-        height: 40vh;
-        width: 100%;
-        border-radius: 0.5rem;
-        position: relative;
 
         .search-container {
-            @include flexCenter(row);
+            @include flexEnd(row);
             position: absolute;
+            width: 90%;
             top: 1rem;
             right: 1rem;
         }
 
         .search {
+            @include flexEnd(row);
             font-family: Roboto;
+            width: 100%;
+            margin-right: 0.5rem;
             
             input {
                 font-family: Roboto;
@@ -34,6 +35,21 @@
                 width: 60%;
                 border-radius: 5px 0 0 5px;
                 border: none;
+
+                @include mobile-lg {
+                    width: 80%;
+                    @include transition-ease;
+                }
+
+                @include tablet-view {
+                    width: 70%;
+                    @include transition-ease;
+                }
+
+                @include laptop-view {
+                    width: 80%;
+                    @include transition-ease;
+                }
             }
 
             button {
@@ -82,14 +98,13 @@
         .location {
             @include flexStart(row);
             width: 85%;
-            font-size: 1rem;
             font-weight: getWeight(regular);
             position: absolute;
             bottom: 0;
 
             h4 {
                 font-weight: getWeight(bold);
-                font-size: 0.8rem;
+                font-size: 1rem;
                 color: rgb($text-colour, 0.8)
             }
         }
@@ -110,7 +125,7 @@
             }
 
             .name {
-                font-size: 2rem;
+                font-size: 1.8rem;
                 font-weight: getWeight(light);
                 margin: 0;
             }
@@ -140,8 +155,8 @@
 @include tablet-view {
     .today {
         width: 40vw;
-        height: 40vh;
-        margin: 0;
+        height: 47vh;
+        margin: 0 0.5rem 0 0;
 
         &__main {
             width: 90%;
