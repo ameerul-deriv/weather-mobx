@@ -40,7 +40,6 @@ export default class WeatherStore {
       )
       .then((res) => {
         runInAction(() => {
-          console.log(res.data);
           this.isLoading = true;
           this.weatherData = res.data;
           this.setTodaysForecast();
