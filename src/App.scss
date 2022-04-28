@@ -11,6 +11,15 @@
   .app-forecast {
     @include flexCenter(column);
   }
+
+  .data-loading {
+    position: absolute;
+    @include flexCenter(column);
+    background-color: rgb($primary-colour, 0.9);
+    min-height: 100vh;
+    min-width: 100vw;
+    z-index: 2;
+  }
 }
 
 .App-loading {

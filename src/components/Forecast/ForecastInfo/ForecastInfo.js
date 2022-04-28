@@ -13,8 +13,8 @@ const ForecastInfo = (props) => {
   const weatherStore = useStore();
 
   return (
-    <div className="forecast-info">
-      <div className={`info-container ${show ? "show" : "hidden"}`}>
+    <div className={`forecast-info  ${show ? "show" : "hidden"}`}>
+      <div className="info-container">
         {forecast.map((hour, h) => {
           let time = hour.time;
           let day = weatherStore.getFormattedDate(hour.time_epoch);

@@ -7,17 +7,28 @@ import { HiOutlineLocationMarker, HiOutlineSearchCircle } from "react-icons/hi";
 const Today = () => {
   const weatherStore = useStore();
 
-  const { weatherData, isLoading } = weatherStore;
+  const { weatherData, isLoading, searchedPlaces } = weatherStore;
 
   const [place, setPlace] = useState("");
   const [search, setSearch] = useState(false);
 
-  const changePlace = () => {
-    weatherStore.setWeather(place);
+  const handleEnter = (key) => {
+    if (key === "Enter") {
+      if (place !== "") {
+        weatherStore.setWeather(place);
+      }
+    }
   };
 
   const handleSearch = () => {
     setSearch((prevSearch) => !prevSearch);
+  };
+
+  const handleInput = (place) => {
+    setPlace(place);
+    if (place !== "") {
+      weatherStore.searchPlace(place);
+    }
   };
 
   return (
@@ -25,14 +36,35 @@ const Today = () => {
       <div className="today__main">
         <div className="search-container">
           <div className={`search ${search ? "show" : "hidden"}`}>
-            <input
-              type="text"
-              placeholder="Enter City/Country..."
-              onChange={(e) => setPlace(e.target.value)}
-            />
-            <button onClick={changePlace} disabled={place === ""}>
-              Search
-            </button>
+            <div className="search-input">
+              <input
+                type="text"
+                placeholder="Enter City/Country..."
+                onChange={(e) => handleInput(e.target.value)}
+                onKeyPress={(e) => handleEnter(e.key)}
+                value={place}
+              />
+              {searchedPlaces.length !== 0 && (
+                <div className="searched-places-container">
+                  {searchedPlaces.map((search) => {
+                    return (
+                      <div
+                        key={search.id}
+                        className="searched-places"
+                        onClick={() => {
+                          weatherStore.setWeather(search.name);
+                          weatherStore.setSearchedPlaces();
+                          handleSearch();
+                          setPlace("");
+                        }}
+                      >
+                        {search.name}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </div>
           <HiOutlineSearchCircle
             className={`searchIcon ${search && "active"}`}
@@ -62,6 +94,7 @@ const Today = () => {
           </div>
         )}
         <div className="location">
+          <h4>{weatherData?.location?.region}</h4>
           <h4>{weatherData?.location?.country}</h4>
         </div>
       </div>

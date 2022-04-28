@@ -26,8 +26,10 @@ export default class WeatherStore {
   todaysForecast = [];
   futureForecast = [];
   futureForecastRow = [];
+  searchedPlaces = [];
   currDate;
   isLoading = true;
+  isLoadingData = false;
   isError = { error: false, msg: "", name: "" };
 
   // load default weather data on initial render
@@ -60,15 +62,14 @@ export default class WeatherStore {
         `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${p}&days=7&aqi=no&alerts=no`
       )
       .then((res) => {
-        console.log(res.data);
-        this.isLoading = true;
+        this.isLoadingData = true;
         this.weatherData = res.data;
         this.setTodaysForecast();
         this.futureForecast = res.data.forecast.forecastday;
         this.setFutureForecastRow();
       })
       .then(() => {
-        this.isLoading = false;
+        this.isLoadingData = false;
       })
       .catch((error) => {
         this.isError = {
@@ -77,6 +78,18 @@ export default class WeatherStore {
           name: error.toJSON().name,
         };
       });
+  }
+
+  searchPlace(place) {
+    axios
+      .get(`http://api.weatherapi.com/v1/search.json?key=${key}&q=${place}`)
+      .then((res) => {
+        this.searchedPlaces = res.data;
+      });
+  }
+
+  setSearchedPlaces() {
+    this.searchedPlaces = [];
   }
 
   // set todays forecast
@@ -165,16 +178,18 @@ decorate(WeatherStore, {
   todaysForecast: observable,
   futureForecast: observable,
   futureForecastRow: observable,
+  searchedPlaces: observable,
   currDate: observable,
   isLoading: observable,
+  isLoadingData: observable,
   isError: observable,
   loadDefaultWeather: action.bound,
   setWeather: action.bound,
-  setTodaysForecast: action.bound,
-  setFutureForecastRow: action.bound,
   setTempColour: action.bound,
   getFormattedDate: action.bound,
   closeError: action.bound,
+  searchPlace: action.bound,
+  setSearchedPlaces: action.bound,
 });
 
 let store_context;

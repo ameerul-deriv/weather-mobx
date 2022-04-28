@@ -3,7 +3,7 @@ import "./forecast.scss";
 import { useStore } from "../../store/WeatherStore";
 import { observer } from "mobx-react";
 import ForecastInfo from "./ForecastInfo/ForecastInfo";
-import { BsFillCaretDownFill } from "react-icons/bs";
+import { FiChevronsDown } from "react-icons/fi";
 
 const Forecast = () => {
   const weatherStore = useStore();
@@ -17,8 +17,8 @@ const Forecast = () => {
       <div className="forecast__title">
         <h3>3 Day Forecast</h3>
         <div className="forecast-scroll">
-          <h4>Click A Row</h4>
-          <BsFillCaretDownFill className="forecast-scroll-icon" />
+          <h4>Select Forecast</h4>
+          <FiChevronsDown className="forecast-scroll-icon" />
         </div>
       </div>
       <hr />

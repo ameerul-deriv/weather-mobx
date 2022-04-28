@@ -11,7 +11,7 @@ import Loading from "./components/Loading/Loading";
 function App() {
   const weatherStore = useStore();
 
-  const { isLoading } = weatherStore;
+  const { isLoading, isLoadingData } = weatherStore;
 
   useEffect(() => {
     weatherStore.loadDefaultWeather();
@@ -27,6 +27,11 @@ function App() {
         </div>
       ) : (
         <header className="App-header">
+          {isLoadingData && (
+            <div className="data-loading">
+              <Loading />
+            </div>
+          )}
           <Today></Today>
           <div className="app-forecast">
             <TodaysForecast />

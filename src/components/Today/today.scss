@@ -27,42 +27,74 @@
             font-family: Roboto;
             width: 100%;
             margin-right: 0.5rem;
-            
-            input {
-                font-family: Roboto;
-                font-weight: getWeight(regular);
-                padding: 0.5rem 0.3rem;
-                width: 60%;
-                border-radius: 5px 0 0 5px;
-                border: none;
 
-                @include mobile-lg {
-                    width: 80%;
-                    @include transition-ease;
+            .search-input {
+                width: 100%;
+
+                input {
+                    font-family: Roboto;
+                    font-weight: getWeight(medium);
+                    padding: 0.5rem 0.3rem;
+                    width: 90%;
+                    border-radius: 5px;
+                    border: none;
+
+                    @include mobile-lg {
+                        width: 100%;
+                        @include transition-ease;
+                    }
+
+                    @include tablet-view {
+                        width: 90%;
+                        @include transition-ease;
+                    }
+
+                    @include laptop-view {
+                        width: 100%;
+                        @include transition-ease;
+                    }
                 }
 
-                @include tablet-view {
-                    width: 70%;
-                    @include transition-ease;
-                }
+                .searched-places-container {
+                    background-color: $text-colour;
+                    position: absolute;
+                    width: 100%;
+                    height: 10rem;
+                    border-radius: 0.5rem;
+                    margin-top: 0.5rem;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    white-space: nowrap;
+                    cursor: pointer;
 
-                @include laptop-view {
-                    width: 80%;
-                    @include transition-ease;
-                }
-            }
+                    &::-webkit-scrollbar-thumb {
+                        background: transparent;
+                    }
 
-            button {
-                font-family: Roboto;
-                border: none;
-                padding: 0.5rem 0.3rem;
-                border-radius: 0 5px 5px 0;
-                background-color: $primary-colour;
-                color: $text-colour;
-                font-weight: getWeight(medium);
+                    &::-webkit-scrollbar {
+                        background-color: transparent;
+                        width: 0.4rem;
+                        height: 0.4rem;
+                    }
 
-                &:disabled {
-                    background-color: grey;
+                    &:hover {
+                        &::-webkit-scrollbar-thumb {
+                            background: rgb($primary-colour, 0.8);
+                            border-radius: 0.5rem;
+                        }
+                    }
+                    .searched-places {
+                        width: 100%;
+                        text-align: left;
+                        color: $primary-colour;
+                        padding: 0.5rem;
+                        font-weight: getWeight(medium);
+
+                        &:hover {
+                            background-color: $darker-blue;
+                            color: white;
+                        }
+                    }
                 }
             }
 
@@ -86,25 +118,28 @@
             cursor: pointer;
 
             &.active {
-                color: $primary-colour;
+                color: $darker-blue;
             }
 
             &:hover {
-                color: $primary-colour;
+                color: $darker-blue;
                 @include transition-ease;
             }
         }
 
         .location {
-            @include flexStart(row);
-            width: 85%;
-            font-weight: getWeight(regular);
+            @include flexStart(column);
+            width: 100%;
             position: absolute;
-            bottom: 0;
+            bottom: 1.5rem;
+            left: 1.5rem;
 
             h4 {
+                width: 100%;
+                margin: 0;
+                text-align: left;
                 font-weight: getWeight(bold);
-                font-size: 1rem;
+                font-size: 0.9rem;
                 color: rgb($text-colour, 0.8)
             }
         }
