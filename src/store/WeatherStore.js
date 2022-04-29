@@ -81,7 +81,7 @@ export default class WeatherStore {
 
   searchPlace(place) {
     axios
-      .get(`http://api.weatherapi.com/v1/search.json?key=${key}&q=${place}`)
+      .get(`https://api.weatherapi.com/v1/search.json?key=${key}&q=${place}`)
       .then((res) => {
         this.searchedPlaces = res.data;
       });
@@ -193,6 +193,7 @@ decorate(WeatherStore, {
 
 let store_context;
 
+// function to create the reference to this store
 export const useStore = () => {
   if (!store_context) {
     const weatherStore = new WeatherStore();

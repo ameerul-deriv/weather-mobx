@@ -89,6 +89,7 @@
                         color: $primary-colour;
                         padding: 0.5rem;
                         font-weight: getWeight(medium);
+                        z-index: 1;
 
                         &:hover {
                             background-color: $darker-blue;
