@@ -198,7 +198,8 @@ decorate(WeatherStore, {
 
 let store_context;
 
-// function to create the reference to this store
+// function to create the reference to this store when
+// components want to access the store
 export const useStore = () => {
   if (!store_context) {
     const weatherStore = new WeatherStore();
