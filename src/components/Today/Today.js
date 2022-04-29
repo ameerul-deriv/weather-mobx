@@ -28,12 +28,14 @@ const Today = () => {
     setPlace(place);
     if (place !== "") {
       weatherStore.searchPlace(place);
+    } else {
+      weatherStore.resetSearchedPlaces();
     }
   };
 
   const handleSearchClick = (place) => {
     weatherStore.setWeather(place);
-    weatherStore.setSearchedPlaces();
+    weatherStore.resetSearchedPlaces();
     handleSearch();
     setPlace("");
   };

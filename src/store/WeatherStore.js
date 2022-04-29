@@ -22,6 +22,7 @@ const options = {
 };
 
 export default class WeatherStore {
+  // observables
   weatherData = {};
   todaysForecast = [];
   futureForecast = [];
@@ -79,6 +80,7 @@ export default class WeatherStore {
       });
   }
 
+  // search place based off users input
   searchPlace(place) {
     axios
       .get(`https://api.weatherapi.com/v1/search.json?key=${key}&q=${place}`)
@@ -87,7 +89,9 @@ export default class WeatherStore {
       });
   }
 
-  setSearchedPlaces() {
+  // reset search results from user if input is empty
+  // or when user clicks on a place
+  resetSearchedPlaces() {
     this.searchedPlaces = [];
   }
 
@@ -145,6 +149,7 @@ export default class WeatherStore {
     });
   }
 
+  // change colour of element based on temperature
   setTempColour(temp) {
     if (temp < 0) {
       return { color: tempColours.freezing };
@@ -188,7 +193,7 @@ decorate(WeatherStore, {
   getFormattedDate: action.bound,
   closeError: action.bound,
   searchPlace: action.bound,
-  setSearchedPlaces: action.bound,
+  resetSearchedPlaces: action.bound,
 });
 
 let store_context;

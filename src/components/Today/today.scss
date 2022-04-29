@@ -104,6 +104,8 @@
                             margin: 0;
                             color: $primary-colour;
                             font-weight: getWeight(medium);
+                            text-align: left;
+                            @include textOverflow(10rem);
                         }
 
                         h5 {
