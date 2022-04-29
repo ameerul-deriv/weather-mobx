@@ -85,15 +85,32 @@
                     }
                     .searched-places {
                         width: 100%;
-                        text-align: left;
-                        color: $primary-colour;
                         padding: 0.5rem;
-                        font-weight: getWeight(medium);
-                        z-index: 1;
+                        @include flexSpaceBetweenCenter(row);
 
                         &:hover {
                             background-color: $darker-blue;
-                            color: white;
+
+                            h4 {
+                                color: $text-colour;
+                            }
+
+                            h5 {
+                                color: rgb($text-colour, 0.8);
+                            }
+                        }
+
+                        h4 {
+                            margin: 0;
+                            color: $primary-colour;
+                            font-weight: getWeight(medium);
+                        }
+
+                        h5 {
+                            margin: 0;
+                            margin-right: 0.5rem;
+                            color: rgb($primary-colour, 0.8);
+                            font-weight: getWeight(regular);
                         }
                     }
                 }

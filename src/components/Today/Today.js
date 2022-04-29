@@ -31,6 +31,13 @@ const Today = () => {
     }
   };
 
+  const handleSearchClick = (place) => {
+    weatherStore.setWeather(place);
+    weatherStore.setSearchedPlaces();
+    handleSearch();
+    setPlace("");
+  };
+
   return (
     <div className="today">
       <div className="today__main">
@@ -51,14 +58,10 @@ const Today = () => {
                       <div
                         key={search.id}
                         className="searched-places"
-                        onClick={() => {
-                          weatherStore.setWeather(search.name);
-                          weatherStore.setSearchedPlaces();
-                          handleSearch();
-                          setPlace("");
-                        }}
+                        onClick={() => handleSearchClick(search.name)}
                       >
-                        {search.name}
+                        <h4>{search.name}</h4>
+                        <h5>{search.country}</h5>
                       </div>
                     );
                   })}
